@@ -33,7 +33,17 @@
     </footer>
     <script type="text/javascript" src="assets/js/jquery-3-4-1.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script src="modelo/arduino.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var parser = require("./modelo/arduino");
+        // Read the port data
+        parser.on("open", () => {
+            $("#footerdiv").html("puerto serial abierto");
+        });
+
+        parser.on('data', data =>{
+            $("#maindiv").html(data);
+        });
+    </script>
 </div>
 <!-- Modal para emezar la medición -->
 </body>
