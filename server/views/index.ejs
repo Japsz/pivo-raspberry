@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pivo BeerStand</title>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/cover.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/cover.css">
 </head>
 <body class="text-center">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -31,16 +31,16 @@
             <p>Realizado por cracks, para cracks 8)</p>
         </div>
     </footer>
-    <script type="text/javascript" src="assets/js/jquery-3-4-1.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/socket.io.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-3-4-1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/socket.io.js"></script>
 		<script>
-		var socket = io('http://localhost:3001');
+		var socket = io('http://localhost:3000');
 		socket.emit('entry','japus');
 		socket.on('conexion',function(){
 			$("#footerdiv").html("conexión establecida");
 		});
-		socket.on('datos', function(data){
+		socket.on('data', function(data){
 			$("#maindiv").html(data);
 			});
 		</script>
