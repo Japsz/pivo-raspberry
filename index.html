@@ -11,64 +11,57 @@
     <header class="masthead mb-auto">
         <div class="inner">
             <h3 class="masthead-brand">Pivo BeerTable</h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="#">Inicio</a>
-                <a class="nav-link" href="#">Arduino</a>
-            </nav>
+            <ul class="nav nav-masthead justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Inicio</a>
+                </li>
+                <li class="nav-item" style="margin-left: 8px">
+                    <a class="nav-link setState" data-state="abrir" >Abrir</a>
+                </li>
+                <li class="nav-item" style="margin-left: 8px">
+                    <a class="nav-link setState" data-state="detenido" href="#">Detener</a>
+                </li>
+                <li class="nav-item" style="margin-left: 8px">
+                    <a class="nav-link setState" data-state="inactivo" href="#">Cerrar</a>
+                </li>
+                <li class="nav-item" style="margin-left: 8px">
+                    <a class="nav-link setState" data-state="calibrate" href="#">Cerrar</a>
+                </li>
+            </ul>
         </div>
     </header>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Pivo Autoservicio.</h1>
-        <p class="lead" id="footerdiv">Arduino Desconectado.</p>
-        <p class="lead">
-            Medicion: <div id="maindiv">0</div>
-        </p>
+    <main role="main" class="inner cover" id="mainer">
     </main>
 
     <footer class="mastfoot mt-auto">
-        <div class="inner" id="superfooter">
+        <div class="inner" id="nav-ddwn">
             <p>Realizado por cracks, para cracks 8)</p>
         </div>
     </footer>
     <script type="text/javascript" src="assets/js/jquery-3-4-1.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/socket.io.js"></script>
-		<script>
-		var socket = io('http://localhost:3001');
-		socket.emit('entry','japus');
-		socket.on('conexion',function(){
-			$("#footerdiv").html("conexión establecida");
-		});
-		socket.on('datos', function(data){
-			$("#maindiv").html(data);
-			});
-		</script>
-<!--
+    <script type="text/javascript" src="assets/js/pivoArduino.js"></script>
     <script>
-        const SerialPort = require('serialport');
-        const Readline = require('@serialport/parser-readline');
-        const port = new SerialPort('/dev/ttyUSB0', { baudRate: 9600 });
-        // Read the port data
-        port.on("open", function(){
-            $("#footerdiv").html("puerto serial abierto");
+        var socket = io('http://localhost:3001');
+        var pivo = new pivoArduino(socket);
+        $(".setState").on('click',function(e){
+            socket.emit('write',$(this).data('state'));
         });
-
-        port.on('data', function(data){
-            $("#maindiv").html(data);
-        });
-        port.on('readable', function () {
-            $("#maindiv").html('Data:', port.read());
-        })
-        // Open errors will be emitted as an error event
-        port.on('error', function(err) {
-            $("#footerdiv").html('Error: ', err.message);
-        });
-        const parser = port.pipe(new Readline({ delimiter: '\n' }));
-        $("#superfooter").html("arduino.js hizo esto");
-
+        function calibrar(){
+            socket.emit('write',$("input[name = 'ml']").val());
+            return false;
+        }
     </script>
-    -->
+    <script>
+        $('.nav-link').on('click',function(){
+           $(".nav-link").each(function(idx){
+               $(this).removeClass('active');
+           });
+           $(this).addClass('active');
+        });
+    </script>
 </div>
 <!-- Modal para emezar la medición -->
 </body>

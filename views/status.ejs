@@ -1,0 +1,81 @@
+<%
+    state = state.trim();
+switch(state){
+    // Flujo Abierto
+    case "leyendo":
+%>
+<div class="bg-success">
+    <div class="col-12">
+        <h1 class="cover-heading">Pivo</h1>
+        <p class="lead" id="footerdiv">
+            Válvula abierta.
+        </p>
+    </div>
+    <div class="col-12" style="margin-top: 10px">
+        <p class="text-center font-weight-bold" style="font-size: xx-large" id="currentPour">0.0<small>cc</small></p>
+    </div>
+</div>
+<%
+    break;
+        // Mesa Cerrada
+        case "calibrate":
+%>
+<div class="bg-success">
+    <div class="col-12">
+        <h1 class="cover-heading">Pivo</h1>
+        <p class="lead" id="footerdiv">
+            Válvula abierta y calibrando.
+        </p>
+    </div>
+    <div class="col-12" style="margin-top: 10px">
+        <p class="text-center font-weight-bold" style="font-size: xx-large" id="currentPour">0.0<small>revs</small></p>
+    </div>
+    <div class="col-12" style="margin-top: 10px">
+        <form onsubmit="calibrar()" >
+            <input type="number" class="form-control" name="ml" min="1">
+            <button type="submit" class="btn btn-primary">Calibrar</button>
+        </form>
+    </div>
+</div>
+<%
+        break;
+    // Mesa Cerrada
+    case "inactivo":
+%>
+<div class="bg-default">
+    <div class="col-12">
+        <h1 class="cover-heading">Pivo</h1>
+        <p class="lead" id="footerdiv">
+            Mesa Cerrada.
+        </p>
+    </div>
+</div>
+<%
+        break;
+    // Mesa abierta y flujo cerrado
+    case "detenido":
+%>
+<div class="bg-danger">
+    <div class="col-12">
+        <h1 class="cover-heading">Pivo</h1>
+        <p class="lead" id="footerdiv">
+            Válvula cerrada.
+        </p>
+    </div>
+</div>
+<%
+        break;
+    default:
+%>
+<div class="bg-default">
+    <div class="col-12">
+        <h1 class="cover-heading">Pivo</h1>
+        <p class="lead" id="footerdiv">
+            Cargando.
+        </p>
+    </div>
+</div>
+<%
+        break;
+}
+%>
