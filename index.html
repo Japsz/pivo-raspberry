@@ -8,37 +8,41 @@
 </head>
 <body class="text-center">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-        <div class="inner">
+    <div class="row">
+        <header class="masthead mb-auto">
             <h3 class="masthead-brand">Pivo BeerTable</h3>
-            <ul class="nav nav-masthead justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
-                </li>
-                <li class="nav-item" style="margin-left: 8px">
-                    <a class="nav-link setState" data-state="abrir" >Abrir</a>
-                </li>
-                <li class="nav-item" style="margin-left: 8px">
-                    <a class="nav-link setState" data-state="detenido" href="#">Detener</a>
-                </li>
-                <li class="nav-item" style="margin-left: 8px">
-                    <a class="nav-link setState" data-state="inactivo" href="#">Cerrar</a>
-                </li>
-                <li class="nav-item" style="margin-left: 8px">
-                    <a class="nav-link setState" data-state="calibrate" href="#">Cerrar</a>
-                </li>
-            </ul>
-        </div>
-    </header>
-
-    <main role="main" class="inner cover" id="mainer">
-    </main>
-
-    <footer class="mastfoot mt-auto">
-        <div class="inner" id="nav-ddwn">
-            <p>Realizado por cracks, para cracks 8)</p>
-        </div>
-    </footer>
+            <div class="inner">
+                <ul class="nav nav-masthead justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 8px">
+                        <a class="nav-link setState" data-state="abrir" >Abrir</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 8px">
+                        <a class="nav-link setState" data-state="detenido" href="#">Detener</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 8px">
+                        <a class="nav-link setState" data-state="inactivo" href="#">Cerrar</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 8px">
+                        <a class="nav-link setState" data-state="calibrate" href="#">Calibrar</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    </div>
+    <div class="row">
+        <main role="main" class="inner cover" id="mainer">
+        </main>
+    </div>
+    <div class="row">
+        <footer class="mastfoot mt-auto">
+            <div class="inner" id="nav-ddwn">
+                <p>Realizado por cracks, para cracks 8)</p>
+            </div>
+        </footer>
+    </div>
     <script type="text/javascript" src="assets/js/jquery-3-4-1.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/socket.io.js"></script>
