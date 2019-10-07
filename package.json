@@ -2,8 +2,14 @@
   "name": "pivo-raspberry",
   "version": "0.0.1",
   "main": "index.html",
+  "chromium-args": "--kiosk",
+  "window": {
+    "toolbar":  false,
+    "fullscreen": true
+  },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start": "concurrently \" node server/app.js\"  \"./../nwjs_rpi/nw ./\""
   },
   "dependencies": {
     "socket.io-client": "^2.2.0",

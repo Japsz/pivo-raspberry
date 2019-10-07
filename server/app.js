@@ -1,7 +1,7 @@
 const server = require('http').createServer();
 const SerialPort = require('serialport');
 const Readline = require('@serialport/parser-readline');
-const port = new SerialPort('COM8', { baudRate: 9600 });
+const port = new SerialPort('/dev/ttyACM0', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
 server.listen(3001,function(){
